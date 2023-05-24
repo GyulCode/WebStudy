@@ -1,12 +1,10 @@
 package com.sist.manager;
 import java.util.*;
-import java.util.Locale.Category;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.w3c.dom.ElementTraversal;
 
 import com.sist.dao.*;
 import com.sist.vo.*;
@@ -125,9 +123,11 @@ public class DataColleciton {
 					String addr="no", phone="no",type ="no", price = "no", parking = "no", time="no",menu="no";
 					Elements etc=doc2.select("table.info tr th");
 					for(int a=0; a<etc.size();a++) {
+						
 						String ss=etc.get(a).text();
 						if(ss.equals("주소")) {
-							
+							Element e=doc2.select("table.info tr td").get(a);
+							phone=e.text();
 						}
 						else if(ss.equals("전화번호")) {
 							Element e=doc2.select("table.info tr td").get(a);

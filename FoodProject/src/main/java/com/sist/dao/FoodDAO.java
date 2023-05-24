@@ -108,7 +108,7 @@ public class FoodDAO {
 			// 1. 연결
 			getConnection();
 			
-			// 2. SQL문장 생tjd
+			// 2. SQL문장 생산
 			String sql="INSERT INTO food_category VALUES(fc_cno_seq.nextval,?,?,?,?)";
 			// ?로 미리 틀만 만들고 나중에 값을 채워 넣는다 preparedStatement 방식 ''의 오류 방지 목적
 			// 실무에서 기본적으로 사용함
@@ -154,32 +154,34 @@ public class FoodDAO {
 			//1. 오라클 ㅇ녀결
 			getConnection();
 			//2.sql문장 제작
-			String sql="insert into food_house values(fh_fno_seq.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?";
+			String sql="INSERT INTO food_house VALUES(fh_fno_seq.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			//3.오라클 전송
 			ps=conn.prepareStatement(sql);
 			// 4. 
 			ps.setInt(1, vo.getCno());
 			ps.setString(2, vo.getName());
 			ps.setDouble(3, vo.getScore());
-			ps.setString(4, vo.getPhone());
-			ps.setString(5, vo.getType());
-			ps.setString(6, vo.getPrice());
-			ps.setString(6, vo.getParking());
-			ps.setString(6, vo.getTime());
-			ps.setString(6, vo.getMenu());
+			ps.setString(4, vo.getAddress());
+			ps.setString(5, vo.getPhone());
+			ps.setString(6, vo.getType());
+			ps.setString(7, vo.getPrice());
+			ps.setString(8, vo.getParking());
+			ps.setString(9, vo.getTime());
+			ps.setString(10, vo.getMenu());
 			ps.setInt(11, vo.getGood());
 			ps.setInt(12, vo.getSoso());
 			ps.setInt(13, vo.getBad());
 			ps.setString(14, vo.getPoster());
 			
-			ps.executeUpdate();
+			//실행 요청
+			ps.executeUpdate(); //commit()
 				
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			ex.printStackTrace(); //오류확인
 			
 		} finally
 		{
-			disConnection();
+			disConnection(); //오라클 닫기
 		}
 	}
 	// 2. select -> 전체 데이터 읽기 -> 카테고리 30(한개당 -> categoryVO)
