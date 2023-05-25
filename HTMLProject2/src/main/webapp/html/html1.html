@@ -1,0 +1,189 @@
+<!-- 
+   웹 : 사용자 요청 (브라우저를 통해) <->서버응답
+   요청데이터 전송 -> 검색어, 페이지,...
+   자바코딩 : request.getParmeter("")
+   브라우저 주소창 입력 : URL
+   http://localhost:8080/HTMLProject2/html/html1.html
+   ---      ----    ----  --------------------------
+                            URI -> 사용자가 요청한 파일 -> 파일은 중복이 없다
+                 포트번호(서버연결)
+        서버주소(IP->도메인)
+   프로토콜(웹 연결)->80
+   
+   33page HTML5는 4에 있는 대부분의 태그 사용가능
+   시맨텍 (태그를 알기 쉽게 태그명 설정)
+   4에서는 추상적이었음 
+   
+   41page html편집기 vscode
+          웹 서버 , jsp/servlet번역기 (java 에서 실행된 결과를 html변환
+          --톰캣
+          --50명
+   51page -> 표준화 (W3C -> ML의 표준화)
+             HTML 설명 -> ML (Markup Language) -> 태그가 제작
+                            -> 만들어진 태그만 사용이 가능
+             XML : 모든 태그가 사용자 정의
+             <태그명/> -> 값을 가지고 있지 않는다 -> <br> , <hr>, <p>
+             <input> -> /는 생략할 수 있다
+                        react/vue에서는 사용하지 않으면 오류발생
+                        
+             지원하는 태그
+             열고 닫고
+             a, font, h1, div, span
+             독립
+             br, hr, input, img
+             
+             태그명 : 출력역할, 속성
+             
+          -> 속성(태그)
+             1. id(구분자, 자바스크립트, CSS) :중복이 없다,
+             class(구분자, 중복이 있다),
+             style(해당 태그만 css)
+             2. <태그 속성="값">
+                <img src="image" width="크기" height="길이">
+             트리형식 저장(DOM Document Object Model)
+             Ajax, Vue, react -> web 3.0
+             ---- java script and XML -> web2.0
+   
+   HTML의 구조
+   <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+    HTML4 버전에 해당되는 태그/속성의 정보를 가지고 온다
+   <!DOCTYPE html>
+    HTML5 버전을 읽어 온다
+    -> loose.dtd
+             --- 태그의 형식이 저장되어 있다
+       ex)
+       <!ELEMENT table (tr)*> = tr태그는 여러개 사용하게 한다
+       <!ELEMENT caption #PCDATA> = 
+       <!ELEMENT tr (th|td)*> = tr태그는 여러개 사용할 수 있고 th/td를 갖을 수 있다.
+       -> MyBatis 태그를 암기해야 한다.
+    형식)
+       <html>
+          <head>
+             설정파일 : CSS, JavaScript
+             CSS는 2가지가 있는데 
+                1. <link> : css 파일 읽을때 -> 파일, 외부
+                2. <style> : css 파일 자체 처리
+             <title>브라우저 이름?</title>
+             <meta></meta>
+          </head>
+       </html>
+       
+       CSS -> 1.파일 -> .css -> 프로젝트에 공통으로 적용되는 CSS
+              	<link href="경로/파일명 : http:~">
+              2. 각 파일에만 적용
+              	<style</style>
+              3.해당 태그에만 적용
+              	<h1 style=""></h1> -> 인라인 CSS
+       JavaScript
+           -> 파일 -> .js -> 모든 파일에 적용
+              <script src="파일명|http:~">
+           -> 해당 파일에서만 적용
+              <script>
+                 function send(){}
+              </script>
+           -> 해당 태그에만 적용
+              <input type=button onclick="javascript:history.back()">
+              
+   Chapter 3장
+   = 실제 사용 태그
+     ----------------------------
+     글자태그
+     -> <h1>, <h3> : 제목출력
+      형식) <h1> 출력물</h1>
+      <
+      <sup>
+     ----------------------------
+     목록태그 
+       -> ***ul(메뉴제작),ol,dl, ***table(목록출력)
+       <ul>
+        |
+       <li>목록출력</li> -> 여러개 사용이 가능
+       
+       <ol>
+        |
+       <li>목록출력</li> -> 여러개 사용이 가능
+       
+       <dl> -> 상세보기
+        |
+       <dt> 제목
+       <dd> 설명
+       
+       <table>
+        |
+       <caption>:제목
+       <tr>
+          <th> : 제목
+          <td> : 실제 데이터 내용
+        
+     ----------------------------
+     멀티미디어 embed, img
+     	<embed src ="파일명" width="" height=""> </embed>
+     	<img src="파일명" width="" height="">
+     	이미지 출력
+     	src => 원격/파일명
+     	  -> gif,jpg,png
+     	width : 너비 조절
+     	height : 길이 조절
+     	title : 풍선 도움말
+     	inline 속성 : 옆으로 출력
+     -> 경로명
+        html파일과 동일한 위치
+        	<img src="파일명">,<img src="./파일명">
+        다른 폴더에 위치
+        <img src="../image/파일명">
+     ----------------------------
+     기타 
+        <iframe> : html파일에서 특정위치 다른 html을 첨부할 수 있다
+           => 분산해서 작업이 가능
+        <area> : 이미지 선택시 처리(메뉴)
+        <figure> : 이미지와 문자를 매칭 -> card
+                
+       
+   
+   
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 
+<style type="text/css">
+img{
+width : 150px;
+height : 200px;
+}
+img hover{
+opacity:0.3;
+}
+</style>
+ -->
+</head>
+<body>
+<!-- 
+<img src="m.jpg" width=150 height=200>
+<img src="m2.jpg" width=150 height=200>
+<img src="m3.jpg" width=150 height=200>
+<img src="m4.jpg" width=150 height=200>
+<img src="m5.jpg" width=150 height=200> -->
+
+<embed src="http://youtube.com/embed/6ZUIwj3FgUY\u0026pp=ygUJ7JWE7J2067iM" width=450 height=500>
+
+<!-- 초등학생 사이트 -->
+<img src="book.jpg" usemap="#image">
+<map name="image">
+   <area shape="rect" coords="225,142,395,226" href="http://www.daum.net">
+   <!--  left top  right bottom -->
+   
+   <p>
+   <h1>figure사용법</h1>
+   <figure>
+      <!-- ..의 의미는 아마 상위폴더로 이동cd(change directory) -->
+      <img src="image/m2.jpg" width=250, height="300">
+      <figcaption>인어공주</figcaption>
+   </figure>
+   
+</map>
+
+</body>
+</html>
