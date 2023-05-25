@@ -16,7 +16,8 @@ public class BoardListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws
-	ServletException, IOException {response.getWriter().append("Served at: ").append(request.getContextPath()); //??
+	ServletException, IOException {
+		// response.getWriter().append("Served at: ").append(request.getContextPath()); //??
 		// JSP
 		// 1. 변환 -> 전송(HTML, XML, JSON)
 		// 브라우저로 미리 알려준다 -> response html을 먼저 보낼껀데 한글이 포함되어 있다!

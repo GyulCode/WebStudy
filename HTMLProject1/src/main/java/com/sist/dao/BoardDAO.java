@@ -64,7 +64,7 @@ public class BoardDAO {
 			String sql="SELECT no,subject,name,TO_CHAR(regdate,'YYYY-MM-DD'),hit, num "
 					+"FROM (SELECT no, subject, name,regdate, hit, rownum AS num "
 					+"FROM (SELECT no, subject, name,regdate, hit "
-					+ "FROM freeboard2 ORDER BY no DESC)) "
+					+ "FROM freeboard ORDER BY no DESC)) "
 					+ "WHERE num BETWEEN ? AND ?";
 			// rownum은 중간에서 데이터를 추출할 수 없다
 			
@@ -107,7 +107,7 @@ public class BoardDAO {
 			getConnection(); // 반복 -> 메소드
 			
 			// sql문장 제작
-			String sql="SELECT CEIL(COUNT(*)/10.0 FROM freeboard2";
+			String sql="SELECT CEIL(COUNT(*)/10.0 FROM freeboard";
 			// 43/10.0 -> 4.3 -> 5
 			// 내장 함수 용도
 			ps=conn.prepareStatement(sql);
