@@ -1,0 +1,164 @@
+<!-- 
+    <table> 대체
+    ----------- CSS
+    display:table
+    -> <table>
+    display:table-row
+    -> <tr>
+    display:table-cell
+    -> <td>
+    display:table-column
+    -> <th>
+    display:table-caption
+    -> <caption>
+    
+    -> <pre> : 문서를 있는 그대로 출력 : 상세보기, 줄거리
+               <pre>
+                 내용
+               </pre>
+               위와 같은 형식으로 사용하면 안됨
+               <pre>내용</pre> 와같이 가로로 쭉 써야하낟
+       <span> : 기능은 없다
+                필요한 부분만 CSS적용하기 위해 사용
+                -> 부메뉴, 퀵메뉴 만들기
+       <form> : 화면 출력x, 사용자가 입력한 모든 데이터를 모아서 한번에 전송
+                -> 반드시 동반 <input type=submit>
+                id, class
+                method -> GET/ POST
+                   GET방식 : URL뒤에 데이터를 첨부해서 전송
+                            파일명?데이터~
+                            데이터가 노출된다(보안 취약)
+                            -> GET default
+                            -> 화면 출력
+                            -> 단순한 데이터 전송
+                                1. 페이지 번호 요청
+                                2. 검새거
+                   POST방식 : 내부적으로 전송(데이터를 노출하지 않음)
+                             보안(id,password)
+                                로그인, 회원가입...
+                             전송할 데이터가 많은 경우
+                                게시판 글쓰기, 수정하기, 회원가입
+                                파일 업로드, 예약...
+                   형식)
+                      <form method="GET|POST"> -> 대소문자 구분 없음
+                      <form method="PsoT"> : GET인식 -> default가 get인가봄 
+       <action> : 데이터를 전송 받을 파일명 지정
+       action="a.jsp", action="boardInsertServlet"
+       --------------- 보낸 데이터를 받는다.
+       
+       값을 전송 하는 태그
+       HTML : <a>, <form> -> 데이터 전송, 화면 변경
+       JavaScript : location.href="파일명"
+       Java : response.sendRedirect("파일명")
+       ---------------------------------------get방식만 가지고 있다
+       <a href="파일명?데이터전송">
+       location.href="파일명?데이터전송"
+       response.sendRedirect("파일명?데이터전송")
+       -> 데이터 저송
+       ------------자바 : 메소드의 매개변수를 이용해서 전송
+                   웹프로그램 : URL주소를 이용해서 전송
+                            ------?
+       형식)
+          -> insert.jsp로 no=1을 전송
+          -> insert.jsp?no=1
+          -> insert.sjp? no = 1 오류발생  ( 공백 뛰면 안됨)
+          -> c:\\java Dev
+          -> 한개 이상의 데이터 전송
+             insert.jsp?id=aaa&pwd=1234
+                           -------
+                           request안에 첨부해서 제공한다
+                           JSP,SERVLET,SRPING,NODEJS
+                           request, response: 웹프로그램에서 제공
+                           ------
+                           String id=requset.getparameter("id");
+                                  --aaa
+                           String pwd=requset.getparameter("id");
+                                  --1234
+                           WEB은 데이터형이 없다
+                           무조건 문자열
+                           ---------해당 데이터형으로 변경
+                                    Wrapper클래스 제공
+       <Select> : 콤보박스(102page)
+          |
+          -------------------
+          |					|
+       option       option group : multiple -> 여러개 동시 선택 *가끔 하나씩 나옴
+       데이터 입력
+       
+       => 선택 -> 자바에서 받는 경우
+          String[] -> getParameterValues() -> select(multiple),checkbox
+          String -> getParmeter() -> text,textarea, radio
+    
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+   <!-- 102page Select:목록태그(오라클의 check) -->
+        <select> -> 선택시 데이터를 전송 -> 
+           <option>A</option> -> A
+           <option>B</option> -> B
+           <option>C</option> -> C
+        </select>
+   <!-- 동적쿼리 (이름, 내용, 드등 사용자의 선택에따라 쿼리문이 바뀜 -->
+   <!-- select :single -->
+   <h1>select :single</h1>
+   <select>
+      <option>영화명</option>
+      <option>장르</option>
+      <option>출연진</option>
+      <option>개봉일</option>
+      <option>극장</option>
+   </select>
+   
+   <h1>select : multiple</h1>
+   <select multiple="multiple">
+      <option>영화명</option>
+      <option>장르</option>
+      <option>출연진</option>
+      <option>개봉일</option>
+      <option>극장</option>
+   </select>
+   
+   <h1>select : group</h1>
+   <select multiple="multiple">
+      <optgroup label="과정">
+         <option>자바</option><!-- 객체지향프로그램 / 라이브러리 -->
+         <option>오라클</option><!--  DML/DQL CURD  -->
+         <option>HTML/CSS</option><!-- 형식:고정 -->
+         <option>JavaScript</option><!--  Jquery(AJAX), VueJS, ReactJS  -->
+         <option>JSP/Servlet</option><!-- 내장 객체(request,response,session) -->
+         <option>Spring</option><!--  XML, Annotation = Spring-Boot, Spring-Cloud(MSA)  -->
+         <option>AWS</option><!-- 호스팅:과금주의 : Docker -->
+      </optgroup>
+      <optgroup label="프로젝트">
+         <option>JSP(AJax)</option>
+         <option>Spring(Vue)</option>
+         <option>Spring-Boot기반 ReactJS</option>
+      </optgroup>
+   </select>
+   <!-- 서버연결 데이터 전송 반드시 name속성을 이용해야 한다. 자바에서 값을 받을 수 있다.
+        1. 형식, 태그명, 속성
+        ---------------- 모양확인
+        2. 웹 -> 형식에 맞게 구현 -> 순서에 맞게 코딩
+        3. 디자인 설정 -> CSS
+        4. 서버와 연결
+        5. 요청데이터를 받아서 출력
+        --------------------
+        옵션 : 고정/ 한부분만 변경
+             -------------- <jsp:include page="파일명">
+        6. 데이터관리 / 데이터 프로그램
+           model       view
+           -------------------- 제어 controller
+           mvc -> 1차(교재 없음 ㅅㄱ) -> DOMAIN 모델 (분산처리)
+                                       | MSA
+                                       
+        
+        
+    -->
+
+</body>
+</html>

@@ -184,35 +184,7 @@ public class BoardDAO {
 	
 	// 5-4. 수정 UPDATE -> 먼저 입력된 게시물 읽기, 실제 수정(비밀번호 검색)
 	public void boardUpdateData(BoardVO vo) {
-		BoardVO vo=new BoardVO();
-		try {
-			getConnection();
-			String sql="UPDATE freeboard SET hit=hit+1 "
-					+"WHERE no="+no;
-			ps=conn.prepareStatement(sql);
-			ps.executeUpdate();
-			
-			sql="SELECT no,name,subject,content,TO_CHAR(regdate,'yyyy-MM-dd'),hit "
-					+"FROM freeboard "
-					+"WHERE no="+no;
-			ps=conn.prepareStatement(sql);
-			ResultSet rs=ps.executeQuery();
-			rs.next();
-			vo.setNo(rs.getInt(1));
-			vo.setName(rs.getString(2));
-			vo.setSubject(rs.getString(3));
-			vo.setContent(rs.getString(4));
-			vo.setDbday(rs.getString(5));
-			vo.setHit(rs.getInt(6));
-			rs.close();
-			
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			disConnection();
-		}
 		
-		return vo;
 		
 	}
 	
