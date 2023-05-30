@@ -127,13 +127,13 @@ public class DataColleciton {
 						String ss=etc.get(a).text();
 						if(ss.equals("주소")) {
 							Element e=doc2.select("table.info tr td").get(a);
-							phone=e.text();
+							addr=e.text();
 						}
 						else if(ss.equals("전화번호")) {
 							Element e=doc2.select("table.info tr td").get(a);
 							phone=e.text();
 						}
-						else if(ss.equals("음식종류")) {
+						else if(ss.equals("음식 종류")) {
 							Element e=doc2.select("table.info tr td").get(a);
 							type=e.text();	
 						}
@@ -183,7 +183,6 @@ public class DataColleciton {
 		DataColleciton dc=new DataColleciton();
 		//dc.foodCategoryData();
 		dc.foodDetailData(); //30*10 = 300개
-		
 		
 	}
 	

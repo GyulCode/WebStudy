@@ -2,6 +2,9 @@ package com.sist.dao;
 // -> 카테고리 출력 -> 카테고리별 맛집 -> 맛집에 대한 상세보기 -> 지도출력, 검색
 import java.util.*;
 import java.util.Locale.Category;
+
+import javax.imageio.plugins.tiff.GeoTIFFTagSet;
+
 import java.sql.*;
 public class FoodDAO {
 	
@@ -146,11 +149,121 @@ public class FoodDAO {
 		return list;
 	}
 	
+	// List<FoodVO>
 	// 5-3. 맛집 상세보기
 	// FoodVO
 	
-	// 5-4. 맛집 검색
+	public FoodVO foodDetailData(int fno) {
+		FoodVO vo = new FoodVO();
+		try {
+			getConnection();
+			String sql="SELECT fno,cno name, poster, phone, type, address, "
+					+ "time,parking, menu, price, score "
+					+ "FROM food_house "
+					+ "WHERE fno=?";
+			ps=conn.prepareStatement(sql);
+			// ?차 값을 채운다 -> JSP/프로젝트
+			// 2차 -> Mybatis, 보안(비밀번호 암호화), 실시간 -> betch  
+			// 3차 -> 오라클(MysQl), jpa  
+			// 기반 ->MSA 기반  CI/ CD -> 설치 젠킨스
+			ps.setInt(1, fno);
+			// 실행 요청 -> 결과값 받기
+			ResultSet rs=ps.executeQuery();
+			rs.next();
+			vo.setFno(rs.getInt(1));
+			vo.setCno(rs.getInt(2));
+			vo.setName(rs.getString(3));
+			vo.setPoster(rs.getString(4));
+			vo.setPhone(rs.getString(5));
+			vo.setTime(rs.getString(6));
+			vo.setAddress(rs.getString(7));
+			vo.setType(rs.getString(8));
+			vo.setParking(rs.getString(9));
+			vo.setMenu(rs.getString(10));
+			vo.setPrice(rs.getString(11));
+			vo.setScore(rs.getDouble(12));
+					
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			disConnection();
+		}
+		 return vo;
+	}
+	
+	// FoddVO
+	// 5-4. 맛집 검색 -> AJax 화면검색
 	// List<FoodVO>
+	public List<FoodVO> foodFindData(String addr, int page){
+		List<FoodVO> list =new ArrayList<FoodVO>();
+		try {
+			getConnection();
+			/*
+			String sql="SELECT fno, name, poster, score "
+					+"FROM food_location "
+					+"WHERE address LIKE '%'||?||'%'";
+			//mysql = like concat('%',?,'%')
+			*/
+			String sql="SELECT fno,name, poster, score, num "
+			            +"FROM (SELECT fno, name, psoter,score, orwnum as num "
+					    +"FROM (SELECT fno,name, poseter, score "
+			            +"FROM food_location "
+					    +"WHERE address LIKE '%'||?||'%')) "
+			            +"WHERE num BETWEEN ? AND ?";
+			ps=conn.prepareStatement(sql);
+			int rowSize=12;
+			int start=(rowSize*page)-(rowSize-1);
+			int end=rowSize*page;
+			ps.setString(1, addr);
+			ps.setInt(2, start);
+			ps.setInt(3, end);
+			
+			// 결과값 읽기
+			ResultSet rs=ps.executeQuery();
+			while(rs.next()) {
+				FoodVO vo=new FoodVO();
+				vo.setFno(rs.getInt(1));
+				vo.setName(rs.getString(2));
+				String poster=rs.getString(3);
+				poster=poster.substring(0,poster.indexOf("^"));
+				poster=poster.replace("#", "&");
+				vo.setPoster(poster);
+				vo.setScore(rs.getDouble(4));
+				list
+			}
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			disConnection();
+		}
+		return list;
+		
+	}
+	// 5-4-1 총페이지 -> 데이터(오라클) -> DAO(80%(
+	public int foodRowCount(String addr) {
+		int count=0;
+		try
+		{
+			getConnection();
+			String sql="SELECT COUNT(*) FROM food_location "
+					+"WHERE address LIKE '%' ||?||'%'";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, addr);
+			ResultSet rs=ps.executeQuery();
+			rs.next();
+			count=rs.getInt(1);
+			rs.close();
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			disConnection();
+		}
+	return count;
+		
+	}
+	// 5-5. 댓글(CURD) -> 로그인
 	
 	
 	
