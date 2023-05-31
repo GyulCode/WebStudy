@@ -40,8 +40,8 @@ public class FoodCategoryServlet extends HttpServlet {
 		out.println("</head>");
 		out.println("<body>");
 		out.println("<div class=container>");
-		out.println("<div class=row>");
 		out.println("<h1>믿고 보는 맛집 리스트</h1>");
+		out.println("<div class=row>");
 		for(int i=0; i<12;i++) {
 			CategoryVO vo=list.get(i);
 			out.println("<div class=\"col-md-3\">"); //한줄에 4개 출력

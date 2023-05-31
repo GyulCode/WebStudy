@@ -13,55 +13,50 @@ import com.sist.dao.*;
 public class FoodListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//html -> 브라우저에 알림
+		// HTML => 브라우저에 알림 
 		response.setContentType("text/html;charset=UTF-8");
-		// 클라이언트가 전송값을 받는다
+		// 클라이언트가 전송값을 받는다 
 		String cno=request.getParameter("cno");
-		//dao연동
-		FoodDAO dao =FoodDAO.newInstance();
+		// DAO연동 
+		FoodDAO dao=FoodDAO.newInstance();
 		List<FoodVO> list=dao.food_category_data(Integer.parseInt(cno));
 		CategoryVO cvo=dao.food_category_info(Integer.parseInt(cno));
 		
-		//화면에 출력
+		// 화면에 출력 
 		PrintWriter out=response.getWriter();
-		
-		//html을 출력 -> 오라클에서 받은 결과값 출력
+		// HTML을 출력 => 오라클에서 받은 결과값 출력 
 		out.println("<html>");
 		out.println("<head>");
-		out.println("<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css\"> </link>");
+		out.println("<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css\">");
 		out.println("<style>");
 		out.println(".container{margin-top:50px}");
 		out.println(".row{");
-		out.println("margin:0px auto;");
-		out.println("width:800px}");
-		out.println("</style>");
+		out.println("margin:0px auto;");// 가운데 정렬
+		out.println("width:800px}</style>");
 		out.println("</head>");
-		
 		out.println("<body>");
 		out.println("<div class=container>");
 		out.println("<div class=row>");
 		out.println("<div class=jumbotron>");
-		
 		out.println("<center>");
 		out.println("<h2>"+cvo.getTitle()+"</h2>");
 		out.println("<h4>"+cvo.getSubject()+"</h4>");
 		out.println("</center>");
-		
-		out.println("</div>"); //jumbotron
-		out.println("<table class=table>"); 
-		out.println("<tr>"); 
+		out.println("</div>");// jumbotron 
+		out.println("<table class=table>");
+		out.println("<tr>");
 		out.println("<td>");
-		for(FoodVO vo:list) {
+		for(FoodVO vo:list)
+		{
 			out.println("<table class=table>");
 			out.println("<tr>");
-			out.println("<td width=30% align=center powsapn=4>");
-			out.println("<img src="+vo.getPoster()+" class=img-rounded style=\"width:240px;height:200px>");
+			out.println("<td width=30% align=center rowspan=4>");
+			out.println("<a href=FoodDetailServlet?fno="+vo.getFno()+"><img src="+vo.getPoster()+" class=img-rounded style=\"width:240px;height:200px\"></a>");
 			out.println("</td>");
-			out.println("<td width=70%><b>");
-			out.println(vo.getName()+"<span style=\"color:orange\">"+vo.getScore()+"</span>");
-			out.println("</b></td>");
+			out.println("<td width=70%><h3>");
+			out.println("<a href=FoodDetailServlet?fno="+vo.getFno()+">"+vo.getName()+"</a>&nbsp;<span style=\"color:orange\">"+vo.getScore()+"</span>");
+			out.println("</h3></td>");
 			out.println("</tr>");
 			out.println("<tr>");
 			out.println("<td width=70%>");
@@ -80,19 +75,13 @@ public class FoodListServlet extends HttpServlet {
 			out.println("</tr>");
 			out.println("</table>");
 		}
-				
-		out.println("</td>"); 
-		out.println("</tr>"); 
-		
+		out.println("</td>");
+		out.println("</tr>");
 		out.println("</table>");
-		out.println("</div>");
+		out.println("</div>");// row
+		out.println("</div>");// container
 		out.println("</body>");
-		
 		out.println("</html>");
-		
-		
-		
-		out.println("<html>");
 	}
 
 }

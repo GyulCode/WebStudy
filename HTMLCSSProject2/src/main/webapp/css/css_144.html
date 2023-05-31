@@ -1,0 +1,183 @@
+<!-- 
+  반응, 상태, 구조선택자 -> 태그명(아이디명, 클래스명) : active... -> 가상선택자
+  -> 반응 선택자
+     :active(클릭시 변경), :hover(빈도가 많다)(마우스 위) -> img, a
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+  
+  h1#a:hover,h1#b:hover{
+    color:blue;
+  }
+  h1#b:active{
+    color:magenta;
+  }
+  h1#c:hover{
+    color:yellow;
+  }
+  h1#c:active{
+    color:pink;
+    cursor:pointer;
+  }
+  a{
+     color: black;
+     text-decoration:none; /* underline 삭제 */
+  }
+  a:hover{
+  color:cyan;
+  text-decoration:underline;
+  }
+input[type="checkbox"]:checked{
+  border:5px solid pink; 
+}
+input[type="text"]:disabled{
+  background-color:pink; 
+}
+/* 자주 사용됨 */
+input[type="text"]:focus{
+  background-color:cyan;
+  color:white; 
+}
+/*
+ul > li:first-child{
+background-color:pink;
+color:blue;
+}
+
+ul > li:nth-child(2n){
+background-color:blue;
+color:yellow;
+}
+
+ul > li:last-child{
+background-color:yellow;
+color:green;
+}
+*/
+#menu > li{
+  list-style: none; /* 리스트의 스타일인 .을 제거*/
+  float:left;
+  padding:15px;
+  width:120px;
+}
+#menu > li:nth-child(2n){
+  backbround-color:#5F0003;
+}
+#menu > li:nth-child(2n+1){
+  background-color:#F30005;
+}
+#menu > li:first-child{
+  border-radius:15px;
+}
+#menu > li:last-child{
+  border-radius:15px;
+}
+
+
+
+table thead tr:first-child{
+   background-color:orange;
+}
+table tbody tr:nth-child(2n){
+   background-color:rgb(255,200,200);
+   /* 16진법 */
+}
+
+</style>
+</head>
+<body>
+  <center>
+    <h1>:active, :hover = 가상 선택자(반응선택자)</h1>
+    <h1 id="a">JAVA17</h1>
+    <h1 id="b">Oracle 21C</h1>
+    <h1 id="c">HTML5/CSS3</h1>
+    <a href="#"> JSP(웹 개발)</a>
+    <p>
+    <h1>:checked(checkbox,radio),:focus(text,password),enabled(button),disabled(button),</h1>
+    <input type=text size=30><p>
+    <input type=text size=30 disabled="disabled"><p>
+    <input type=checkbox checked>취미1<p>
+    <input type=checkbox >취미2<p>
+    <input type=radio unchecked>모밀<p>
+    <p>
+    <!--
+       nth-child() : 수열
+       nth-child(2n) : 짝수 n은 0부터 증가함
+       
+      <li>카레</li>
+      <li>짬뽕</li>
+      <li>모밀</li>
+      <li>샐러드</li>
+      <li>감튀</li>
+      <li>버거</li>
+      <li>순대국</li>
+     
+     -->
+    <h1>구조선택자(:first-child,:last-child,<span style="color:red">:nth-child,nth-child-last)</h1>
+    <ul>
+      <li>카레</li> <!-- blue -->
+      <li>짬뽕</li>
+      <li>모밀</li>
+      <li>샐러드</li>
+      <li>감튀</li>
+      <li>버거</li>
+      <li>순대국</li> <!-- green -->
+    </ul>
+    
+    <hr>
+    
+    <h1>nth-child -> table에서 적용</h1>
+    <table width=500 border=1 bordercolor=blue>
+      <thead>
+      <tr>
+         <th>이름</th>
+         <th>국어</th>
+         <th>영어</th>
+         <th>수학</th>
+      </tr>
+      </thead> <!-- thead와 tbody는 first-child사용시 다른 부분으로 인식됨  -->
+      <tbody>
+      <tr>
+         <td>짱구</td>
+         <td>80</td>
+         <td>80</td>
+         <td>80</td>
+      </tr>
+      <tr>
+         <td>철수</td>
+         <td>90</td>
+         <td>90</td>
+         <td>90</td>
+      </tr>
+      <tr>
+         <td>유리</td>
+         <td>75</td>
+         <td>75</td>
+         <td>75</td>
+      </tr>
+      <tr>
+         <td>훈이</td>
+         <td>95</td>
+         <td>95</td>
+         <td>92</td>
+      </tr>
+      </tbody>
+    </table>
+    <p>
+    <ul id="menu">
+      <li>홈</li>
+      <li>회원가입</li>
+      <li>맛집</li>
+      <li>맛집추천</li>
+      <li>서울여행</li>
+      <li>레시피</li>
+      <li>커뮤니티</li>
+      <li>마이페이지</li>
+    </ul>
+  </center>
+</body>
+</html>
