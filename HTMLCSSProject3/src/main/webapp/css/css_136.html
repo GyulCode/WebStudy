@@ -1,0 +1,56 @@
+<!-- 
+   후손 선택자 / 자손 선택자
+   -------    -------
+   태그명(아이디명, 클래스명, 속성 선택자)
+   div.aaa li.bbb // aaa클래스 안에 bbb list 지목
+   
+   <div>
+   div > h1
+   div span h1
+   
+   태그1 + 태그2 : 태그1번과 인접한 태그에 대해 조건 적용
+   태그1 ~ 태그2 : 태그1번과 형제 태그중에 모든 태그2에 대한 조건을 적용
+   
+   자손은 공백
+   
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div h1{
+color:red;
+}
+div > p+h1{ /* p바로 옆에 인접 형제는 + 사용함 */
+color:magenta; 
+}
+div > ul > li{
+color:green;
+}
+div li > ul > li{
+color:blue;
+}
+</style>
+</head>
+<body>
+  <div>
+   <p>교육과정</p>
+   <h1>Java</h1> <!-- magenta -->
+   <h1>Oracle</h1> <!-- red -->
+   <ul>
+     <li>HTML/CSS</li> <!-- green -->
+     <li>JavaScript</li> <!-- green -->
+     <li>
+       <ul>
+         <li>JSP/Servlet</li> <!-- blue -->
+         <li>Spring</li> <!-- blue -->
+         <li>AWS</li> <!-- blue -->
+       </ul>
+     </li>
+   </ul>
+  </div>
+
+</body>
+</html>

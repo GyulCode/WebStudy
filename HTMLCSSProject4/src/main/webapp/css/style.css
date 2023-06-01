@@ -1,0 +1,70 @@
+@charset "UTF-8";
+.talbe_content{
+	/* 테두리를 통합 (한줄 라인선) */ 
+	border-collapse: collapse;
+	border-top-width: 2px;
+	border-bottom-width: 1px;
+	border-top-style: solid; 
+	border-bottom-style: solid;
+	border-top-color: black;
+	border-bottom-color: black;
+}
+
+/* th, td가 공통으로 적용 */
+.table_content th, .table_content td{
+	margin:0px;
+	padding:8px;
+	font-size: 9pt;
+}
+
+/*  th만 가지는 속성 */
+.table_content th {
+	background-color:#999;
+	color:#FFF;
+	border-width:1px;
+}
+
+/*  td만 가지는 속성 */
+.table_content td {
+	border-bottom-width:1px;
+	border-bottom-style:dotted;
+	border-bottom-style:#666;
+	font-style: bold;
+}
+
+
+.table_content .tdleft {
+	text-align:left;
+}
+.table_content .tdcenter {
+	text-align:center;
+}
+.table_content .tdright {
+	text-align:right;
+}
+.table_content .dataTr:hover{
+	cursor: pointer;
+	background-color:#FC68;
+}
+.table_content a{
+	color:magenta;
+	text-decoration: none;
+}
+
+.table_content a:hover{
+	color:green;
+	text-decoration: underline 
+	
+}
+.table_content input[type=button], input[type=submit], button, radio{
+	border-radius:20px;
+	background-color: pink; 
+	color:white;
+}
+.table_content input[type=button]:hover, input[type=submit]:hover,button:hover{
+	background-color: purple; 
+}
+
+
+
+

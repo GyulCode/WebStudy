@@ -1,0 +1,53 @@
+<!-- 
+  170page 배경속성
+  Java Resource : src/main/java
+                  -> 자바파일
+                  DAO, VO, Servlet
+  webapp : 웹 파일(html, css, js, jsp, xml, json)
+  Web-INF : 설정파일(Properties,xml)
+     -> lib -> 자바라이브러리
+        =ojdbc8.jar
+        =servlet-api.ar -> 웹프로그램
+           |
+          톰캣 : 9버전 -> javax.
+               10버전 -> jakarata.
+     -> 색상 / 배경 스타일
+        background-color
+        background-image
+        background-repeat
+        background-size
+        background :혼합
+                  
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+div{
+  width:300px;
+  height:300px;
+  background-color: yellow;
+  margin: 10px ;
+  display: inline-block;
+}
+div.a{
+  background-color: yellow;
+}
+div.b{
+  background-color: cyan;
+}
+div.c{
+  background-color: pink;
+}
+</style>
+</head>
+<body>
+  <div class="a"></div>
+  <div class="b"></div>
+  <div class="c"></div>
+
+</body>
+</html>

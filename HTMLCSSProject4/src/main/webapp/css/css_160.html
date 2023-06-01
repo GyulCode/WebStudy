@@ -1,0 +1,37 @@
+<!-- 
+   margin/padding
+   간격조절
+   margin : 태그와 태그 사이의 간격
+   padding : 태그안에 문자, 이미지 간격 조절
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div {
+  width:200px;
+  height:200px;
+  background-color:red;
+}
+.box1{
+  margin:30px; /* 상 우 하 좌 전부 30px이 된다.*/
+}
+.box2{
+  margin:30px 50px; /* 상 우 하 좌 2개 세트씩 30px 50px 이 된다.*/
+}
+.box3{
+  margin:100px 50px 30px; /* 상 우 하 좌2개 세트씩 30px 50px 이 된다.*/
+}
+
+</style>
+</head>
+<body>
+   <div class=box1></div>
+   <div class=box2></div>
+   <div class=box3></div>
+   <div class=box4></div>
+
+</body>
+</html>

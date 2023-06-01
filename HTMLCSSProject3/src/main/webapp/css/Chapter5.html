@@ -1,0 +1,115 @@
+<!-- 
+   1.HTML태그
+      = inline/block 구분 (108~)
+      블록형
+         = div, h1~, p, 목록(ul, ol, li)
+      인라인형
+         = span, a, input, strong, b, textarea, select
+      display : block
+      ----------------------------------------
+      display : block
+      display : block
+      
+      1) 화면을 나눠서 작업
+      2) 팝업, 부메뉴 : span
+      3) 입력창 -> text,password, file, hidden, textarea, select
+         = 입력된 데이터ㅡㄹ 전송 ( 모아서 전송 : form)
+                             전송방식 : GET/POST
+                             GET : 단순한 데이터 전송(페이지, 고유번호, 검색어)
+                                   <a>, <form>, sendRedirect(),forword(), location.href
+                             POST : 보안(로그인,회원가입), 입력값이 많은경우(글쓰기, 수정) **데이터를 노출시키지 않음
+                                    form, ajax, vuejs, reactjs
+                                    -> servlet(서버)
+                                       get -> doGet()
+                                       post -> doPost()
+                                       -> get/post -> service()
+                                       -> request : 클라이언트가 보낸 정보 받기
+                                                    requset.getParameter()
+                                                    request.getParameterValues() : checkbox
+                                                    JSP에서도 사용함
+                                          response : 결과값을 HTML로 변환 브라우저로 전송
+                                       get방식일 경우에는 반드시 파일명?변수=값&변수=값...
+     CSS/JavaScript -> 태그를 제어
+     style적용 
+     1) <style></style> 파일 1개만 적용 (내부 CSS)
+     2) <div style=""> 태그한개만 적용 (인라인 CSS)
+     3) 프로젝트 전체 적용
+     <link href="파일명"> 확장자.css
+     
+     name 자바 관련 -> 사용자 값을 전송시에 필요
+     request.getParameter(name) 
+     
+     126~127page
+     태그를 가지고 온다.
+     
+     상태 선택자
+     :focus
+     태그명 : focus = 마우스 클릭시 적용
+     
+     구조 선택자
+     :nth-first, :nth-last, :nth-child -> 위치
+     
+     동위 선택자
+       태그명 + 태그명 : 형제 태그중 가장 인접한 태그 1개
+       태그명 ~ 태그명 : 형제 태그중 동일한 테그 전부
+    
+     문자 선택자 
+     ::after : 태그 뒤에 출력 -> new
+     ::before : 태그 앞에 출력
+     
+                                       
+      
+         
+ -->
+ 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+ul > li.new::after{
+  content: "NEW!";
+  width:100px;
+  height:30px;
+  border-radius:5px;
+  background-color:red;
+  }
+ul > li.new1::before{
+  content: "NEW!";
+  width:100px;
+  height:30px;
+  border-radius:5px;
+  background-color:red;
+  }
+ 
+h1 {
+padding-top:250px;
+text-align:center;
+color:magenta;
+
+}
+div{
+width:600px;
+height:650px;
+background:url("m.jpg");
+background-size:600px, 650px;
+}
+</style>
+</head>
+<body>
+  <ul>
+    <li class="new">상품1</li>
+    <li class="new1">상품2</li>
+    <li>상품3</li>
+    <li>상품4</li>
+    <li class="new">상품5</li>
+  </ul>
+  <p>
+  <div>
+    <h1>범죄도시3333333</h1>
+    <h1>🎄🎄🎄보러가기🎄🎄🎄🎄</h1>
+  </div>
+
+</body>
+</html>
