@@ -1,0 +1,43 @@
+<!-- 
+  position:(absolute|relative|fixed|static)
+           ->static(default)
+           ***1. static : HTML코딩 순서로 배치
+           2. absolute : 원하는 위치에 배치(top, right bottom left 직접배치)
+           3. relative: 이전태그 위치에 참조 배치(위에 있는 태그)
+           ***4. 고정좌표 : fixed(메뉴고정)
+           
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.a{
+  float:left;
+  width:100px;
+  background-color:red;
+  margin-right:10px;
+  padding:20px;
+}
+.b{
+  position:absolute;
+  left:-100px;
+  top:30px;
+  width:200px;
+  background-color:blue;
+  margin-right:10px;
+  float:left;
+  padding:20px;
+  color:white;
+}
+</style>
+</head>
+<body>
+  <div class="a"> 박 스 </div> 
+  <div class="b">박스</div> 
+    
+  
+
+</body>
+</html>
