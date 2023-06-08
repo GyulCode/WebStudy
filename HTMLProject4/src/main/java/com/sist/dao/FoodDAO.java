@@ -11,6 +11,7 @@ public class FoodDAO {
 	private final String URL="jdbc:oracle:thin:@localhost:1521:XE";
 	// 싱글턴 
 	private static FoodDAO dao;
+	
 	// 1. 드라이버 등록 => 한번 수행 => 시작과 동시에 한번 수행 , 멤버변수 초기화 : 생성자 
 	public FoodDAO()
 	{
