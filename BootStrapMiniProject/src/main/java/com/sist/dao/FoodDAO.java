@@ -5,7 +5,9 @@ import java.sql.*;
 public class FoodDAO {
     // 연결 객체 
 	private Connection conn;
-	// 송수신 
+	
+	// 송수신 createStatement 메서드는 Connection 객체의 메서드로, Connection 객체를 통해 데이터베이스에 연결된 후에 사용할 수 있습니다.
+	// Statement 객체는 데이터베이스에 SQL 문을 전달하고 실행하는 역할을 담당합니다. 
 	private PreparedStatement ps;
 	// 오라클 URL주소 설정 
 	private final String URL="jdbc:oracle:thin:@localhost:1521:XE";
@@ -16,6 +18,7 @@ public class FoodDAO {
 	{
 		try
 		{
+			// Oracle 데이터베이스에 연결하기 위해 JDBC 드라이버를 등록하는 역할을 합니다. 
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			// ClassNotFoundException => 체크예외처리 => 반드시 예외처리 한다 
 			// java.io,java.net,java.sql  => 체크예외처리

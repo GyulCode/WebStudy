@@ -26,7 +26,6 @@ public class MainServlet extends HttpServlet {
 		  response.setContentType("text/html;charset=UTF-8");
 		  // 화면 출력 => 브라우저로 전송 
 		  PrintWriter out=response.getWriter();
-		  request.setCharacterEncoding("UTF-8");
 		  String mode=request.getParameter("mode"); // 사용자가 보내준 값을 받는다
 		  String servlet="";
 		  if(mode==null)
@@ -36,6 +35,13 @@ public class MainServlet extends HttpServlet {
 		  case "1":
 			  servlet="EmpListServlet";
 			  break;
+		  case "2":
+			  servlet="EmpDetailServlet";
+			  break;
+		  case "3":
+			  servlet="EmpInsertServlet";
+			  break;
+		  
 		  }
 		 
 		  out.write("<!DOCTYPE html>");
@@ -58,7 +64,7 @@ public class MainServlet extends HttpServlet {
 	      out.write("      <li class=\"dropdown\"><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\">사용자<span class=\"caret\"></span></a>");
 	      out.write("        <ul class=\"dropdown-menu\">");
 	      out.write("          <li><a href=\"MainServlet\">사원 목록</a></li>");
-	      out.write("          <li><a href=\"MainServlet?mode=4\">사원 등록</a></li>");
+	      out.write("          <li><a href=\"MainServlet?mode=3\">사원 등록</a></li>");
 	      out.write("        </ul>");
 	      out.write("      </li>");
 	      out.write("      <li class=\"dropdown\"><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\">관리자<span class=\"caret\"></span></a>");

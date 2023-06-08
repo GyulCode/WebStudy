@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 import com.sist.dao.*;
 
-@WebServlet("/ListServlet")
-public class ListServlet extends HttpServlet {
+@WebServlet("/EmpListServlet")
+public class EmpListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
