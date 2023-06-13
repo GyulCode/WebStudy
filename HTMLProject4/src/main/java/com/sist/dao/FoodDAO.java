@@ -3,7 +3,7 @@ package com.sist.dao;
 import java.util.*;
 import java.sql.*;
 public class FoodDAO {
-    // 연결 객체 1
+    // 연결 객체
 	private Connection conn;
 	// 송수신 
 	private PreparedStatement ps;
